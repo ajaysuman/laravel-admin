@@ -15,9 +15,8 @@
  * 
  ******************************************/
 
- 'use strict';
-
- $(function() {
+'use strict';
+$(function() {
                    // author badge :)
      var author = '<div style="position: fixed;bottom: 0;right: 20px;background-color: #fff;box-shadow: 0 4px 8px rgba(0,0,0,.05);border-radius: 3px 3px 0 0;font-size: 12px;padding: 5px 10px;">By <a href="https://twitter.com/mhdnauvalazhar">@mhdnauvalazhar</a> &nbsp;&bull;&nbsp; <a href="https://www.buymeacoffee.com/mhdnauvalazhar">Buy me a Coffee</a></div>';
      $("body").append(author);
@@ -86,13 +85,12 @@
          form.addClass('was-validated');
      });
 
-
      $("#loginbtn").click(function(e){
-        // e.preventDefault();
+    
         var email = $("#adminMail").val();
         var regExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         var passwords =$("#adminPass").val().length;
-        
+        // var href = $(this).attr("http://127.0.0.1:8000/home");
         // +++++++++ For Email +++++++++++
         if(email == ""){
             $('#adminEmail').text('Please Enter mail');
@@ -120,69 +118,27 @@
           return false;  
         }
         else{
-            return true;
+            // return true;
+            
+            $.ajaxSetup({
+                headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+              });
+
+            $.ajax({
+                headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                type:'get',
+                uploadUrl: '{{route("product/create")}}',
+                // data: {'viewmonth': date},
+                success: function (response) {
+                    // alert("hear");
+                    // window.location.href = "http://127.0.0.1:8000/home
+                    // window.location = '{{ route('product.list.cats') }}';
+                    $(".content-container").load('http://127.0.0.1:8000/home');
+                }
+            });
         }
-
-        
-     });   
-
-
-
-
-
-     // Login Page Validation
-
-    //  $('#loginbtn').validate({ 
-    //     // rules: {
-    //     //   name: {
-    //     //     required: true
-    //     //   },
-    //       email: {
-    //         required: true,
-    //         email: true
-    //       },
-    //     //   contact: {
-    //     //     required: true,
-    //     //     rangelength: [10, 12],
-    //     //     number: true
-    //     //   },
-    //     //   password: {
-    //     //     required: true,
-    //     //     minlength: 8
-    //     //   },
-    //     //   confirmPassword: {
-    //     //     required: true,
-    //     //     equalTo: "#password"
-    //     //   }
-    //     // },
-    //     messages: {
-    //     //   name: 'Please enter Name.',
-    //       email: {
-    //         required: 'Please enter Email Address.',
-    //         email: 'Please enter a valid Email Address.',
-    //       },
-    //     //   contact: {
-
-    //     //     required: 'Please enter Contact.',
-    //     //     rangelength: 'Contact should be 10 digit number.'
-    //     //   },
-    //     //   password: {
-    //     //     required: 'Please enter Password.',
-    //     //     minlength: 'Password must be at least 8 characters long.',
-    //     //   },
-    //     //   confirmPassword: {
-    //     //     required: 'Please enter Confirm Password.',
-    //     //     equalTo: 'Confirm Password do not match with Password.',
-    //     //   }
-    //     },
-    //     submitHandler: function (form) {
-    //       form.submit();
-    //     }
-    //   });
-
-
-
-
-
- });
+    });   
+});
  

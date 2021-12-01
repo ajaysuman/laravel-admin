@@ -1,5 +1,5 @@
 
-@extends('backend.admin.include.footer')
+{{-- @extends('backend.admin.include.footer') --}}
 
 @extends('backend.admin.include.header')
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\user;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -13,7 +14,7 @@ class HomeController extends Controller
      * @return void
      */
     public function __construct()
-    {
+    {   
         $this->middleware('auth');
     }
 
@@ -24,9 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {   
-      
-        return view('backend.admin.dashboard.mainIndex');
+        $adminData = DB::table('users')->get();
+
+        return view('backend.admin.dashboard.mainIndex')->with('adminData' , $adminData);
 
     }
-
+    
+// *********** End Class ***********
 }

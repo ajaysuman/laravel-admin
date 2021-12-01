@@ -74,15 +74,18 @@
 		<div class="container h-100">
 			<div class="row justify-content-md-center h-100">
 				<div class="card-wrapper">
-					
+					@foreach ($adminData as $adminimag) 
+                    @endforeach
+
 					<div class="card fat">
 						<div class="card-body">
 							<!-- <h4 class="card-title">Login</h4> -->
 
                            <div class="brand">
-						        <img src="admin/img/adminlogo.png" alt="logo">
+						        <img src="{{ asset('admin/img/' . $adminimag->image) }}" alt="logo">
 					        </div>
                             <form method="POST" action="{{ route('login') }}">
+                                <!-- <form method="POST"> -->
                         @csrf
                         <div class="form-group row">
                             <label for="email" class="col-md-8 col-form-label text-md-left"><b>{{ __('E-Mail Address') }}</b></label>

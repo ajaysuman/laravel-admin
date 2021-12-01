@@ -130,3 +130,7 @@ label.col-md-6.col-form-label.text-md-left {
     height: 107%;
 }
 
+/* For Admin Image */
+img#adminimg {
+    width: 7%;
+}
