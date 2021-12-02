@@ -39,5 +39,10 @@ Route::get('/usersupdate',  'App\Http\Controllers\AdminController@adminUpdate')-
 // Route::get('/projects/display', 'AdminController@adminUpdate');
 
 
+// ++++++++++++++++++++++ ADD |SUB |ADMIN ++++++++++++++++++++++++++
+Route::get('/addsubadmin',  'App\Http\Controllers\SubAdminController@addSubAdmin')->name('addsubadmin');
+
+
+
 
 

@@ -2,26 +2,23 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    @foreach($adminData as $images)
+        <meta property="og:image" content="{{ asset('public/admin/img/' . $images->image) }}"/>
+    @endforeach
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
+    <meta name="csrf-token" content="{{ csrf_token() }}" ss>
+    <title>{{  config('app.name', 'Laravel')  }}</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/css/mylogin.css') }}" rel="stylesheet">
     <script src="{{ asset('admin/js/mylogin.js') }}" defer></script>
-
- </head>
+    {{-- For Admin Role js --}}
+</head>
 <body>
     <div id="app">
         <!-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm"> -->
@@ -54,7 +51,7 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
-                        @else
+                        @else       
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}

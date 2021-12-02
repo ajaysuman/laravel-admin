@@ -25,7 +25,8 @@
   <link rel="stylesheet" href="{{asset('plugins/daterangepicker/daterangepicker.css')}}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css')}}">
-
+  {{-- Sub Admin --}}
+  <link rel="stylesheet" href="{{asset('sub-admin/subadmin.css')}}">
   {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
