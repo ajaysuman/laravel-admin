@@ -20,9 +20,9 @@
           </li>
           {{-- +++++++++++++++ For ORG +++++++++++++++++++++++ --}}
           <li class="nav-item">
-            <a href="#" class="nav-link {{ request()->is('subadmin') ? 'active' : '' }}">
+            <a href="#" class="nav-link {{ request()->is('org') ? 'active' : '' }}">
               <i class="nav-icon fas fa-copy" class="nav-link "></i>
-              <p class="{{ request()->is('subadmin') ? 'active' : '' }} {{ request()->is('usersupdate') ? 'active' : '' }}">
+              <p class="{{ request()->is('subadmin') ? 'active' : '' }} {{ request()->is('org') ? 'active' : '' }}">
                 Org
                 <i class="fas fa-angle-left right"></i>
                 <span class="badge badge-info right"></span>
@@ -30,9 +30,9 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('subadmin') }}" class="nav-link {{ request()->is('subadmin') ? 'active' : '' }}">
+                <a href="{{ route('org') }}" class="nav-link {{ request()->is('org') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p class="{{ request()->is('usersupdate') ? 'active' : '' }}">Org</p>
+                  <p class="{{ request()->is('org') ? 'active' : '' }}">Org</p>
                 </a>
               </li>
             </ul>

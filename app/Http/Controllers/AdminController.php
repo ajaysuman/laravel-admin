@@ -7,7 +7,7 @@ use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
-
+use Symfony\Component\HttpFoundation\Response;
 class AdminController extends Controller
 {
 
@@ -64,30 +64,22 @@ class AdminController extends Controller
                     $imageName = $time.'.'.$request->image->extension();  
                     $request->image->move(public_path('admin/img'), $imageName);
                 } 
-                $userdatas = array([   
-                    'username' => $request->username,
-                    'email' => $request->email,
-                    'image' =>  $imageName
-                 ]);
                  // ++++++++++++ Update Data +++++++++++++ 
-                DB::update('update users set name = ?,email=?,image=? where id = ?',[$request->username,$request->email,$imageName , $request->userid]);
-                $userdata = json_encode($userdatas);
-                return Response()->json([
-                     "success" => true,
-                     "data" => $userdatas
-                ]);    
+                $admindata =  DB::update('update users set name = ?,email=?,image=? where id = ?',[$request->username,$request->email,$imageName , $request->userid]);
+                if($admindata == 1)
+                {
+                    $admindata = DB::table('users')->get();
+                    return response()->json(['data' => $admindata]);
+                }   
             }else{
-                    $userdatas = array([   
-                        'username' => $request->username,
-                        'email' => $request->email,
-                    ]);
                     // ++++++++++++ Update Data +++++++++++++ 
-                    DB::update('update users set name = ?,email=? where id = ?',[$request->username,$request->email, $request->userid]);
-                    $userdata = json_encode($userdatas);
-                    return Response()->json([
-                        "success" => true,
-                        "data" => $userdatas
-                    ]);
+                    $admindata =  DB::update('update users set name = ?,email=? where id = ?',[$request->username,$request->email, $request->userid]);
+                    if($admindata == 1)
+                    {
+                        $admindata = DB::table('users')->get();
+                        return response()->json(['data' => $admindata]);
+    
+                    }  
                 }  
         } catch (\Exception $e) {
             return Response()->json([

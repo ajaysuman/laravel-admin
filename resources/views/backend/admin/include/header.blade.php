@@ -68,6 +68,7 @@
       </li>
     </ul>
   </nav>
+  @yield('header')
   <!-- /.navbar -->
   <div class="content-wrapper">
  @yield('section')

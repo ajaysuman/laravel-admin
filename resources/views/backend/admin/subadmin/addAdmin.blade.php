@@ -39,11 +39,11 @@
                                     <th>email</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody >
                                 @foreach($admindata as $admindatas)
                                     <tr>
-                                        <td><a href="usersupdate" id="formSubmit" data-pk="{{ $admindatas->id }}" class="update">{{ $admindatas->name }}</a></td>
-                                        <td> <a href="" data-pk="{{ $admindatas->id }}" class="update">{{ $admindatas->email }}</a></td>
+                                        <td><a href="usersupdate" id="adminname" class="" data-pk="{{ $admindatas->id }}" class="adminname">{{ $admindatas->name }}</a></td>
+                                        <td> <a href=""  id="adminemail" data-pk="{{ $admindatas->id }}" class="adminemail">{{ $admindatas->email }}</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -77,7 +77,7 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <input type="file" name="image" placeholder="Choose image" id="image">
+                                            <input type="file" name="image" placeholder="Choose image" id="images">
                                             <span class="text-danger">{{ $errors->first('title') }}</span>
                                         </div>
                                     </div>
@@ -93,40 +93,72 @@
                 </div>
                 
                  {{-- #################### For User Role ###################   --}}
+                 <script>
+                    $(document).ready(function() {
+                        $("#formButton").click(function() {
+                        $("#form1").toggle();
+                        });
+                    });
+                 </script>
                 <button type="button" id="formButton">Add Sub-Admin</button><br><br>
-                <form method="get" id="hideform">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="first-name" class="col-form-label">First-Name:</label>
-                        <input type="text" class="form-control" id="first-name" name="firstName">
-                        <span id="fstname" style="color: red"></span>
-                    </div>
-                    <div class="mb-3">
-                        <label for="last-name" class="col-form-label">Last-Name:</label>
-                        <input type="text" class="form-control" id="last-name" name="lastName">
-                        <span id="lstname" style="color: red"></span>
-                    </div>
-                    <div class="mb-3">
-                        <label for="contact" class="col-form-label">Contact-No:</label>
-                        <input type="number" class="form-control" id="user-contact" name="contact">
-                        <span id="user-contacts" style="color: red"></span>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="col-form-label">Email:</label>
-                        <input type="email" class="form-control" id="user-email" name="email">
-                        <span id="user-emails" style="color: red"></span>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="col-form-label">Password:</label>
-                        <input type="password" class="form-control" id="user-password" name="password">
-                        <span id="user-passwords" style="color: red"></span>
-                    </div>
-                    <div class="mb-3">
-                        <button type="submit" name="submit" id="userrole">Add</button><br><br>
-                    </div>
-                </form>
+                <form method="get" id="form1"> 
+                    <div class="row">
+                        <div class="col-5">
+                            <form method="get">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="first-name" class="col-form-label">First-Name:</label>
+                                    <input type="text" class="form-control" id="first-name" name="firstName">
+                                    <span id="fstname" style="color: red"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="last-name" class="col-form-label">Last-Name:</label>
+                                    <input type="text" class="form-control" id="last-name" name="lastName">
+                                    <span id="lstname" style="color: red"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="contact" class="col-form-label">Contact-No:</label>
+                                    <input type="number" class="form-control" id="user-contact" name="contact">
+                                    <span id="user-contacts" style="color: red"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="col-form-label">Email:</label>
+                                    <input type="email" class="form-control" id="user-email" name="email">
+                                    <span id="user-emails" style="color: red"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="col-form-label">Password:</label>
+                                    <input type="password" class="form-control" id="user-password" name="password">
+                                    <span id="user-passwords" style="color: red"></span>
+                                </div>
+                                <div class="mb-3">
+                                    <button type="submit" name="submit" id="userrole">Add</button><br><br>
+                                </div>
+                            </form>
+                            
+                        </div>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <table class="border">
+                                    <thead>
+                                        <th>a</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                
+                            </div>
+
+                        </div>
+                    </div>    
+                </form>    
             @endif 
-        
+                
+            
+
         <!-- /.content -->
         </div>
         <!--End Section -->

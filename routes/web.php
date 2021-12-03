@@ -29,7 +29,7 @@ Route::get('/adminShow', 'App\Http\Controllers\HomeController@adminShows')->name
 Route::post('product/create',['uses'=>'Auth\LoginController@adminShows']);
 
 // +++++++++++++++++ Add Admin ++++++++++++++++++
-Route::get('subadmin', 'App\Http\Controllers\AdminController@subAdmin')->name('subadmin');
+Route::get('org', 'App\Http\Controllers\AdminController@subAdmin')->name('org');
 Route::post('updateAdmin', 'App\Http\Controllers\AdminController@updateAdmin')->name('updateAdmin');
 
 
@@ -41,6 +41,7 @@ Route::get('/usersupdate',  'App\Http\Controllers\AdminController@adminUpdate')-
 
 // ++++++++++++++++++++++ ADD |SUB |ADMIN ++++++++++++++++++++++++++
 Route::get('/addsubadmin',  'App\Http\Controllers\SubAdminController@addSubAdmin')->name('addsubadmin');
+// Route::get('/addsubadmin',  'App\Http\Controllers\SubAdminController@addSubAdmin')->name('addsubadmin');
 
 
 

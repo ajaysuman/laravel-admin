@@ -37,12 +37,14 @@ $(document).ready(function(){
             cache:false,
             contentType: false,
             processData: false,
-            success: function (data) {
-            alert("Update Success");
-                window.location = "subadmin";
-                return false;
+            success: function (response) { 
+                $.each(response.data, function( index, value ) {
+                    console.log(value.name);
+                     $("#adminname").text(value.name);
+                     $('#adminemail').text(value.email); 
+                     $("#images").val(value.images);
+                });
             }
         });   
-
     }); 
 });       
